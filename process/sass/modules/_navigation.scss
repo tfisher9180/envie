@@ -1,0 +1,129 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  background: $color-background;
+  box-shadow: 0 1px 0 rgba(#000, 0.15);
+
+  .flexbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menu-icon {
+    cursor: pointer;
+
+    .icon-bar {
+      position: relative;
+      background-color: $navbar-icon-color;
+      display: block;
+      width: 22px;
+      height: 2px;
+      border-radius: 1px;
+      transform: rotate(0deg);
+      transition-timing-function: ease;
+      transition-duration: 0.55s;
+      transition-property: transform;
+
+      + .icon-bar {
+        margin-top: 4px;
+      }
+
+      &:nth-child(1) {
+        transition: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;
+        top: 0;
+      }
+
+      &:nth-child(2) {
+        transition-timing-function: cubic-bezier(.55,.055,.675,.19);
+        transition-duration: 0.22s;
+      }
+
+      &:nth-child(3) {
+        transition: bottom .1s ease-in .25s, transform .22s cubic-bezier(.55,.055,.675,.19);
+        bottom: 0;
+      }
+    }
+
+    &.x {
+
+      .icon-bar {
+        margin-top: 0;
+
+        &:nth-child(1) {
+          opacity: 0;
+          top: 4px;
+          transition: top .1s ease-out, opacity .1s ease-out .12s;
+        }
+
+        &:nth-child(2) {
+          transition-delay: 0.12s;
+          transition-timing-function: cubic-bezier(.215,.61,.355,1);
+          transform: rotate(225deg);
+        }
+
+        &:nth-child(3) {
+          bottom: 2px;
+          transform: rotate(135deg);
+          transition: bottom .1s ease-out, transform .22s cubic-bezier(.215,.61,.355,1) .12s;
+        }
+      }
+    }
+  }
+
+  .menu {
+    position: fixed;
+    top: $navbar-mobile-height + 1px;
+    left: -100%;
+    display: block;
+    visibility: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: $navbar-mobile-menu-width;
+    height: 100%;
+    width: 100%;
+    transition: $navbar-slide-transition;
+    background-color: $color-background;
+
+    &.open {
+      left: 0;
+      visibility: visible;
+    }
+
+    .main-menu {
+
+      ul {
+        display: none;
+      }
+    }
+  }
+}
+
+.navbar,
+.navbar .container,
+.navbar .flexbar {
+  min-height: $navbar-mobile-height;
+}
+
+.logo {
+  color: $color-headings;
+  font-family: $font-family-logo;
+  font-size: 1.125em;
+}
+
+.nav {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  > li {
+    position: relative;
+    display: block;
+  }
+
+  a {
+    position: relative;
+    display: block;
+    padding: 12px 0;
+  }
+}

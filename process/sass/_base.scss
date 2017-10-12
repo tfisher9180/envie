@@ -1,0 +1,19 @@
+body {
+  font-size: 16px;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: $color-text;
+}
+
+.site {
+  position: relative;
+}
+
+a,
+a:hover,
+a:focus,
+a:active,
+a.active {
+  text-decoration: none;
+  outline: 0;
+}
