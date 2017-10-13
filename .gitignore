@@ -1,4 +1,5 @@
 node_modules
 build/css/style.css
 build/js/scripts.js
+build/fonts
 src

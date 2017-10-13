@@ -1,12 +1,22 @@
 body {
+  position: relative;
   font-size: 16px;
   font-size: 1.6rem;
-  line-height: 2.6rem;
+  line-height: $line-height;
   color: $color-text;
+
+  &.mobile-menu-open {
+    overflow: hidden;
+    height: 100%;
+  }
 }
 
 .site {
   position: relative;
+}
+
+#main {
+  padding-top: $navbar-mobile-height;
 }
 
 a,
@@ -16,4 +26,35 @@ a:active,
 a.active {
   text-decoration: none;
   outline: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.btn {
+  transition: 0.3s;
+  text-transform: uppercase;
+  color: #fff;
+  /*padding: 1.7rem 2.5rem;*/
+  padding: 0.85em 1.3em;
+  cursor: pointer;
+  line-height: 1;
+  text-align: center;
+  max-width: 170px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: inline-block;
+  border: none;
+  border-radius: 0;
+
+  &.btn-primary {
+    background-color: $color-primary;
+  }
+
+  &.btn-secondary {
+    background-color: $color-background;
+    color: $color-primary;
+  }
 }

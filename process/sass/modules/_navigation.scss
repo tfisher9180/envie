@@ -1,5 +1,6 @@
 .navbar {
   position: fixed;
+  z-index: 5;
   width: 100%;
   background: $color-background;
   box-shadow: 0 1px 0 rgba(#000, 0.15);
@@ -49,6 +50,7 @@
 
       .icon-bar {
         margin-top: 0;
+        background-color: $color-primary;
 
         &:nth-child(1) {
           opacity: 0;
@@ -73,17 +75,20 @@
 
   .menu {
     position: fixed;
-    top: $navbar-mobile-height + 1px;
+    z-index: 100;
+    top: $navbar-mobile-height;
     left: -100%;
     display: block;
     visibility: hidden;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: auto;
     width: $navbar-mobile-menu-width;
-    height: 100%;
-    width: 100%;
+    min-height: 100%;
+    max-height: 100%;
     transition: $navbar-slide-transition;
     background-color: $color-background;
+    border-top: 1px solid rgba(#000, 0.15);
+    padding-bottom: $navbar-mobile-height;
+    box-shadow: 6px 0px 6px -6px rgba(0,0,0,0.75);
 
     &.open {
       left: 0;
@@ -92,8 +97,61 @@
 
     .main-menu {
 
+      li {
+        border-bottom: 1px solid $main-menu-item-border-color;
+      }
+
       ul {
         display: none;
+        background-color: $main-menu-dropdown-bg-color;
+
+        li:last-child {
+          border-bottom: 0;
+        }
+
+        li:first-child {
+          /*border-top: 1px solid $main-menu-item-border-color;*/
+          border-top: 1px solid $color-primary;
+        }
+
+        a {
+          text-indent: 1em;
+          color: $main-menu-item-text-color;
+        }
+      }
+    }
+
+    .has-dropdown {
+
+      a {
+        width: calc(100% - #{$main-menu-item-max-width});
+      }
+    }
+
+    .mobile-dropdown-icon {
+      position: absolute;
+      top: 0;
+      right: $main-menu-item-padding / 2;
+      padding: $main-menu-item-padding;
+      line-height: $line-height;
+      max-width: $main-menu-item-max-width;
+      overflow: hidden;
+      cursor: pointer;
+
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 1.125rem;
+        height: 1.125rem;
+        border-top: 0.175rem solid #0091ff;
+        border-right: 0.175rem solid #0091ff;
+        transform: rotate(45deg);
+        transition: transform 0.15s ease-in-out;
+        pointer-events: none;
+      }
+
+      &.open:before {
+        transform: rotate(135deg);
       }
     }
   }
@@ -124,6 +182,23 @@
   a {
     position: relative;
     display: block;
-    padding: 12px 0;
+    padding: $main-menu-item-padding;
+    font-size: 1.4rem;
+    color: $color-headings;
+    font-weight: lighter;
+    transition: 0.25s;
+    text-transform: uppercase;
+    /*backface-visibility: hidden;*/
+    /*transform: translate3d(0,0,0);*/
+    /*text-rendering: optimizeLegibility;*/
   }
+}
+
+#menu-overlay {
+  position: fixed;
+  z-index: 4;
+  height: 100%;
+  width: 100%;
+  background: rgba(#000, 0.4);
+  display: none;
 }

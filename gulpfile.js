@@ -31,7 +31,8 @@ gulp.task('css', function() {
 gulp.task('js', function() {
   var scripts = [
     basePaths.src + 'jquery/jquery.min.js',
-    basePaths.scripts + 'navigation.js'
+    basePaths.scripts + 'navigation.js',
+    basePaths.scripts + 'parallax.js'
   ];
 
   gulp.src(scripts)
@@ -47,6 +48,12 @@ gulp.task('assets', function() {
 
   gulp.src(basePaths.node + 'jquery/dist/jquery.min.js')
     .pipe(gulp.dest(basePaths.src + 'jquery'));
+
+  gulp.src(basePaths.node + 'font-awesome/fonts/**/*.{ttf,woff,woff2,eof,svg}')
+    .pipe(gulp.dest(basePaths.dest + 'fonts/'));
+
+  gulp.src(basePaths.node + 'font-awesome/scss/*.scss')
+    .pipe(gulp.dest(basePaths.src + 'font-awesome/'));
 
   return stream;
 });
